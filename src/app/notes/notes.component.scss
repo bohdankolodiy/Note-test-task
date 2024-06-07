@@ -1,0 +1,79 @@
+@import "../../assets/styles/styles";
+
+:host {
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper.mdc-text-field--focused {
+      border: 3px solid $green-color;
+    }
+
+    .mat-mdc-form-field-infix {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      height: 100%;
+    }
+
+    .mat-mdc-form-field-flex {
+      height: 100%;
+    }
+  }
+
+  .notes-input {
+    height: 100px;
+
+    textarea {
+      resize: none;
+      padding: 10px 0;
+    }
+  }
+
+  .note-action {
+    @include size(30px, 30px);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #bbbbbb;
+    background-color: white;
+
+    .mat-icon {
+      font-size: 16px;
+      color: #bbbbbb;
+      @include size(initial, initial);
+    }
+
+    &.active {
+      background-color: #00c6ee;
+      border: unset;
+      .mat-icon {
+        color: white;
+      }
+    }
+  }
+
+  .submit-note {
+    color: $white-color;
+    background-color: $green-color;
+  }
+
+  .divider {
+    border-left-color: $base-color !important;
+    border-left-width: 3px !important;
+    border-style: solid;
+    margin: 0px auto !important;
+
+    border-color: $white-color;
+    @include size(10px, 215px);
+  }
+
+  .divider-icon {
+    @include size(30px, 30px);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid $base-color;
+    background-color: $white-color;
+
+    .mat-icon {
+      font-size: 16px;
+      color: #bbbbbb;
+      @include size(initial, initial);
+    }
+  }
+}

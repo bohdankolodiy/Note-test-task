@@ -1,0 +1,29 @@
+@import "./generic";
+@import "./variables";
+@import "./mixins/mixins";
+
+.flex {
+  display: flex;
+}
+
+.colDir {
+  flex-direction: column;
+}
+
+.bg-gray {
+  background-color: $base-color;
+}
+
+.notes-block {
+  background-color: $base-color;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
