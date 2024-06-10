@@ -1,16 +1,16 @@
-<main class="flex w-100 h-100 align-items-start justify-center">
+<main class="flex w-100 h-100 align-items-center justify-start colDir">
   <section class="w-90 flex">
-    <div class="w-10 h-100 position-relative">
+    <div class="position-relative divider-block">
       <div class="divider"></div>
       <p
-        class="position-absolute top-30 left-18 divider-icon flex align-items-center justify-center"
+        class="position-absolute top-30 divider-icon flex align-items-center justify-center"
       >
         <mat-icon> format_list_bulleted </mat-icon>
       </p>
     </div>
     <div class="notes-block w-90 mt-20 mb-20">
       <mat-form-field
-        class="w-100 notes-input"
+        class="w-100 notes-input position-relative"
         [class.notes-input-focused]="isFormFieldFocused()"
       >
         <textarea
@@ -23,7 +23,7 @@
       </mat-form-field>
 
       <div
-        class="flex align-items-center justify-space-between note-action"
+        class="flex align-items-center justify-space-between note-action position-relative"
         [class.note-action-focused]="isFormFieldFocused()"
       >
         <div class="flex">
@@ -48,5 +48,14 @@
         </button>
       </div>
     </div>
+  </section>
+  <section class="w-90 flex colDir">
+    @for ( note of notes; track note.id) {
+    <app-note-details
+      class="flex"
+      [note]="note"
+      (delete)="onDelete($event)"
+    ></app-note-details>
+    }
   </section>
 </main>

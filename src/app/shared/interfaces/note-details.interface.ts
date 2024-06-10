@@ -3,4 +3,6 @@ export interface INoteDetails {
   type: string;
   date: string;
   id: number;
+  relevantPerson: string;
+  createdBy: string;
 }
