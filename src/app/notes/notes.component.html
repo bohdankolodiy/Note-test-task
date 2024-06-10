@@ -1,0 +1,61 @@
+<main class="flex w-100 h-100 align-items-center justify-start colDir">
+  <section class="w-90 flex">
+    <div class="position-relative divider-block">
+      <div class="divider"></div>
+      <p
+        class="position-absolute top-30 divider-icon flex align-items-center justify-center"
+      >
+        <mat-icon> format_list_bulleted </mat-icon>
+      </p>
+    </div>
+    <div class="notes-block w-90 mt-20 mb-20">
+      <mat-form-field
+        class="w-100 notes-input position-relative"
+        [class.notes-input-focused]="isFormFieldFocused()"
+      >
+        <textarea
+          matInput
+          [placeholder]="notePlaceholder"
+          [formControl]="note"
+          class="h-100"
+          (focus)="isFormFieldFocused.set(true)"
+        ></textarea>
+      </mat-form-field>
+
+      <div
+        class="flex align-items-center justify-space-between note-action position-relative"
+        [class.note-action-focused]="isFormFieldFocused()"
+      >
+        <div class="flex">
+          @for (action of actions; track action) {
+          <button
+            class="note-action-buttons active flex align-items-center justify-center mr-10"
+            [ngClass]="{ active: activeAction === action }"
+            aria-label="Example icon button with a filter list icon"
+            (click)="activeAction = action"
+          >
+            <mat-icon>{{ action }}</mat-icon>
+          </button>
+          }
+        </div>
+        <button
+          mat-flat-button
+          class="submit-note"
+          [disabled]="note.invalid"
+          (click)="submitNotes()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="w-90 flex colDir">
+    @for ( note of notes; track note.id) {
+    <app-note-details
+      class="flex"
+      [note]="note"
+      (delete)="onDelete($event)"
+    ></app-note-details>
+    }
+  </section>
+</main>
