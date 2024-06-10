@@ -1,28 +1,35 @@
 <main class="flex w-100 h-100 align-items-start justify-center">
   <section class="w-90 flex">
     <div class="w-10 h-100 position-relative">
-      <span class="divider flex"></span>
+      <div class="divider"></div>
       <p
-        class="position-absolute top-30 left-12 divider-icon flex align-items-center justify-center"
+        class="position-absolute top-30 left-18 divider-icon flex align-items-center justify-center"
       >
         <mat-icon> format_list_bulleted </mat-icon>
       </p>
     </div>
     <div class="notes-block w-90 mt-20 mb-20">
-      <mat-form-field class="w-100 notes-input">
+      <mat-form-field
+        class="w-100 notes-input"
+        [class.notes-input-focused]="isFormFieldFocused()"
+      >
         <textarea
           matInput
           [placeholder]="notePlaceholder"
           [formControl]="note"
           class="h-100"
+          (focus)="isFormFieldFocused.set(true)"
         ></textarea>
       </mat-form-field>
 
-      <div class="flex align-items-center justify-space-between mt-15">
+      <div
+        class="flex align-items-center justify-space-between note-action"
+        [class.note-action-focused]="isFormFieldFocused()"
+      >
         <div class="flex">
           @for (action of actions; track action) {
           <button
-            class="note-action active flex align-items-center justify-center mr-10"
+            class="note-action-buttons active flex align-items-center justify-center mr-10"
             [ngClass]="{ active: activeAction === action }"
             aria-label="Example icon button with a filter list icon"
             (click)="activeAction = action"

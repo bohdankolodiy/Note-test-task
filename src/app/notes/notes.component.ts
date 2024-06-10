@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,6 +34,7 @@ export class NotesComponent {
   ]);
   public notes: Array<any> = [];
   public activeAction: string = 'chat';
+  public isFormFieldFocused = signal(false);
 
   get actions(): string[] {
     return Object.keys(notesAction).filter((key) =>
@@ -48,9 +49,10 @@ export class NotesComponent {
   submitNotes() {
     const body = {
       note: this.note.getRawValue(),
-      type: 0,
+      type: this.activeAction,
       date: new Date().toISOString(),
     };
     this.notes.unshift(body);
+    this.isFormFieldFocused.set(false);
   }
 }

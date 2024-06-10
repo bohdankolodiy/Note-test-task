@@ -2,8 +2,11 @@
 
 :host {
   ::ng-deep {
-    .mat-mdc-text-field-wrapper.mdc-text-field--focused {
-      border: 3px solid $green-color;
+    .mat-mdc-text-field-wrapper {
+      border: 2px solid #dedede;
+      &.mdc-text-field--focused {
+        border: 3px solid $green-color;
+      }
     }
 
     .mat-mdc-form-field-infix {
@@ -18,49 +21,67 @@
   }
 
   .notes-input {
-    height: 100px;
-
+    height: 45px;
+    transition: height 0.6s ease-in-out;
     textarea {
       resize: none;
       padding: 10px 0;
     }
-  }
 
-  .note-action {
-    @include size(30px, 30px);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 1px solid #bbbbbb;
-    background-color: white;
-
-    .mat-icon {
-      font-size: 16px;
-      color: #bbbbbb;
-      @include size(initial, initial);
+    &.notes-input-focused {
+      height: 80px;
     }
+  }
+  .note-action {
+    height: 0px;
+    opacity: 0;
+    transition: all 0.6s ease-in-out;
+    .note-action-buttons {
+      @include size(30px, 30px);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbbbbb;
+      background-color: white;
 
-    &.active {
-      background-color: #00c6ee;
-      border: unset;
       .mat-icon {
-        color: white;
+        font-size: 16px;
+        color: #bbbbbb;
+        @include size(initial, initial);
+      }
+
+      &.active {
+        background-color: #00c6ee;
+        border: unset;
+        .mat-icon {
+          color: white;
+        }
       }
     }
+
+    .submit-note {
+      color: $white-color;
+      background-color: $green-color;
+    }
   }
 
-  .submit-note {
-    color: $white-color;
-    background-color: $green-color;
+  .note-action-focused {
+    height: 36px !important;
+    opacity: 1 !important;
+    transition: all 0.6s ease-in-out;
+    margin-top: 15px;
+  }
+
+  :has(.notes-block > .note-action.note-action-focused) {
+    .divider {
+      height: 201px !important;
+    }
   }
 
   .divider {
-    border-left-color: $base-color !important;
-    border-left-width: 3px !important;
-    border-style: solid;
     margin: 0px auto !important;
-
-    border-color: $white-color;
-    @include size(10px, 215px);
+    background-color: $base-color !important;
+    @include size(3px, 115px);
+    transition: height 0.6s ease-in-out;
   }
 
   .divider-icon {
