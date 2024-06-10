@@ -1,0 +1,26 @@
+@import "../../../../assets/styles/styles";
+
+:host {
+  position: relative;
+}
+
+.notes-block {
+  min-height: 45px;
+  p:last-child {
+    font-size: $font-size-small;
+    color: #565656;
+  }
+  p:first-child {
+    color: $blue-color;
+    font-weight: bold;
+    span {
+      color: black;
+    }
+  }
+}
+
+.note-time {
+  font-size: $font-size-small;
+  color: #565656;
+  left: -10px;
+}

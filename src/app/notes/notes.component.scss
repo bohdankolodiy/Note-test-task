@@ -7,6 +7,7 @@
       &.mdc-text-field--focused {
         border: 3px solid $green-color;
       }
+      padding: 0 10px !important;
     }
 
     .mat-mdc-form-field-infix {
@@ -23,6 +24,7 @@
   .notes-input {
     height: 45px;
     transition: height 0.6s ease-in-out;
+    z-index: 3;
     textarea {
       resize: none;
       padding: 10px 0;
@@ -36,24 +38,27 @@
     height: 0px;
     opacity: 0;
     transition: all 0.6s ease-in-out;
+    z-index: 0;
+    bottom: 30px;
+
     .note-action-buttons {
       @include size(30px, 30px);
       border-radius: 50%;
       cursor: pointer;
-      border: 1px solid #bbbbbb;
-      background-color: white;
+      border: 1px solid $gray-color;
+      background-color: $white-color;
 
       .mat-icon {
-        font-size: 16px;
-        color: #bbbbbb;
+        font-size: $font-size-medium;
+        color: $gray-color;
         @include size(initial, initial);
       }
 
       &.active {
-        background-color: #00c6ee;
+        background-color: $blue-color;
         border: unset;
         .mat-icon {
-          color: white;
+          color: $white-color;
         }
       }
     }
@@ -61,40 +66,26 @@
     .submit-note {
       color: $white-color;
       background-color: $green-color;
+      cursor: pointer;
+    }
+
+    & .mat-mdc-button-disabled {
+      background-color: $gray-color;
     }
   }
 
   .note-action-focused {
-    height: 36px !important;
-    opacity: 1 !important;
+    height: 36px;
+    opacity: 1;
     transition: all 0.6s ease-in-out;
     margin-top: 15px;
+    z-index: 3;
+    bottom: 0px;
   }
 
   :has(.notes-block > .note-action.note-action-focused) {
     .divider {
-      height: 201px !important;
-    }
-  }
-
-  .divider {
-    margin: 0px auto !important;
-    background-color: $base-color !important;
-    @include size(3px, 115px);
-    transition: height 0.6s ease-in-out;
-  }
-
-  .divider-icon {
-    @include size(30px, 30px);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid $base-color;
-    background-color: $white-color;
-
-    .mat-icon {
-      font-size: 16px;
-      color: #bbbbbb;
-      @include size(initial, initial);
+      height: 201px;
     }
   }
 }
