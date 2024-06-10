@@ -1,4 +1,4 @@
-import { INoteActions } from "../interfaces/noteAction.interface";
+import { INoteActions } from '../interfaces/note-action.interface';
 
 export const sendNotesAction: INoteActions = {
   chat: 'added a note to',
